@@ -1,23 +1,28 @@
 import * as React from 'react';
 
-import { OverlayChildren, OverlayProps } from './Overlay';
+declare namespace OverlayTrigger {
+    export interface OverlayTriggerProps extends React.Props<OverlayTrigger> {
+        // Required
+        overlay: any; // TODO: Add more specific type
 
-export type OverlayTriggerType = 'hover' | 'click' | 'focus';
-
-export interface OverlayTriggerProps
-  extends Omit<OverlayProps, 'children' | 'target'> {
-  children: React.ReactNode;
-  trigger?: OverlayTriggerType | OverlayTriggerType[];
-  delay?: number | { show: number; hide: number };
-  defaultShow?: boolean;
-  flip?: boolean;
-  overlay: OverlayChildren;
-
-  target?: never;
-  onHide?: never;
-  show?: never;
+        // Optional
+        animation?: any; // TODO: Add more specific type
+        container?: any; // TODO: Add more specific type
+        containerPadding?: number;
+        defaultOverlayShown?: boolean;
+        delay?: number;
+        delayHide?: number;
+        delayShow?: number;
+        onEnter?: Function;
+        onEntered?: Function;
+        onEntering?: Function;
+        onExit?: Function;
+        onExited?: Function;
+        onExiting?: Function;
+        placement?: string;
+        rootClose?: boolean;
+        trigger?: string | string[];
+    }
 }
-
-declare class OverlayTrigger extends React.Component<OverlayTriggerProps> {}
-
-export default OverlayTrigger;
+declare class OverlayTrigger extends React.Component<OverlayTrigger.OverlayTriggerProps> { }
+export = OverlayTrigger;
